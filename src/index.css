@@ -39,27 +39,34 @@ li {
 #search-form {
 	margin-top: 10px;
 }
+.article-card-link {
+}
 .article-card {
 	display: grid;
 	grid-template-columns: 34% 22% 22% 22%;
-	grid-template-rows: auto auto auto auto;
+	grid-template-rows: auto auto auto;
 	grid-template-areas:
 		"image title title title"
 		"image author author author"
-		"image topic date votes"
-		"image . button button";
+		"image topic date votes";
 	border: solid grey 2px;
 	padding: 10px;
 	margin: 15px;
 	width: 450px;
 }
+#image-link {
+	grid-area: image;
+}
 .article-card-img {
 	max-width: 120px;
-	grid-area: image;
+}
+#title-link {
+	grid-area: title;
+	text-decoration: none;
+	color: black;
 }
 #art-card-title {
 	font-size: medium;
-	grid-area: title;
 }
 #art-card-author {
 	font-size: small;
@@ -75,8 +82,7 @@ li {
 #art-card-votes {
 	grid-area: votes;
 }
-#full-article-btn {
-	grid-area: button;
-	width: 150px;
-	justify-self: end;
+
+#img-sing-article {
+	width: 100%;
 }
