@@ -16,7 +16,7 @@ function Search({ setSearchTerm }) {
 		<>
 			<form id="search-form">
 				<label id="search-label" htmlFor="search-input">
-					Search articles
+					Search articles{" "}
 					<input
 						onSubmit={handleSubmit}
 						onChange={handleChange}
