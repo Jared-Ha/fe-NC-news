@@ -5,6 +5,7 @@ import Search from "./components/Search";
 import ArticleList from "./components/ArticleList";
 import TopicList from "./components/TopicList";
 import UserList from "./components/UserList";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -38,6 +39,7 @@ function App() {
 					}
 				></Route>{" "}
 				<Route path="/users" element={<UserList />}></Route>
+				<Route path="/articles/:article_id" element={<SingleArticle />}></Route>
 			</Routes>
 		</>
 	);
