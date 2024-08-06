@@ -4,11 +4,13 @@
 
 body {
 	background-color: #e6e9f7;
-	margin: 20px;
+	margin-top: 20px;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 main {
 	background: white;
-	padding: 5%;
+	padding: 20px;
 	border-radius: 10px;
 }
 
@@ -37,10 +39,15 @@ li {
 	margin-left: 0px;
 }
 #search-form {
-	margin-top: 10px;
+	margin-top: 5px;
+	margin-bottom: 15px;
 }
-.article-card-link {
+
+#search-input {
+	width: 60%;
+	max-width: 350px;
 }
+
 .article-card {
 	display: grid;
 	grid-template-columns: 34% 22% 22% 22%;
@@ -82,7 +89,36 @@ li {
 #art-card-votes {
 	grid-area: votes;
 }
-
 #img-sing-article {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 	width: 100%;
+	max-width: 55vw;
+}
+@media (max-width: 800px) {
+	#img-sing-article {
+		max-width: 100%;
+	}
+}
+#comments-list {
+	background-color: rgb(250, 250, 250);
+	display: block;
+	text-align: left;
+}
+
+#comments-list-item {
+	margin-left: 10px;
+	margin-right: 10px;
+	border-top: 1px solid grey;
+}
+
+#toggle-comments {
+	cursor: pointer;
+	color: blue;
+}
+
+#scroll-to-top {
+	cursor: pointer;
+	color: blue;
 }
