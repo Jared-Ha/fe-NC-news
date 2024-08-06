@@ -9,7 +9,7 @@ function Search({ setSearchTerm }) {
 
 	function handleSubmit(event) {
 		event.preventDefault();
-		setSearchTerm(event.target.value);
+		setSearchTerm(searchInput);
 	}
 
 	return (
