@@ -59,8 +59,8 @@ li {
 		"image topic date votes";
 	border: solid grey 2px;
 	padding: 10px;
-	margin: 15px;
-	width: 450px;
+	margin: 10px;
+	width: 460px;
 }
 #image-link {
 	grid-area: image;
@@ -163,7 +163,15 @@ li {
 #comments-list-item {
 	margin-left: 10px;
 	margin-right: 10px;
+	margin-bottom: 10px;
 	border-top: 1px solid grey;
+}
+#comment-date {
+	font-size: small;
+}
+#comment-deleted {
+	color: rgb(99, 0, 0);
+	font-size: small;
 }
 
 #toggle-comments {

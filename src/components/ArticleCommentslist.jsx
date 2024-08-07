@@ -3,17 +3,17 @@ import { getCommentsByArticleId } from "../api";
 import CommentCard from "./CommentCard";
 import LoadingCircleAnimation from "../animations/Loading-Circle.jsx";
 
-function ArticleCommentsList({ article_id }) {
+function ArticleCommentsList({ articleId, commentAdded }) {
 	const [comments, setComments] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
 		setIsLoading(true);
-		getCommentsByArticleId(article_id).then((comments) => {
+		getCommentsByArticleId(articleId).then((comments) => {
 			setComments(comments);
 			setIsLoading(false);
 		});
-	}, [article_id]);
+	}, [articleId, commentAdded]);
 
 	if (isLoading) {
 		return <LoadingCircleAnimation />;

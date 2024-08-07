@@ -8,12 +8,14 @@ import VoteHandler from "./VoteHandler";
 function SingleArticle() {
 	const [singleArticle, setSingleArticle] = useState({});
 	const { article_id } = useParams();
+	const [articleId, setArticleId] = useState(article_id);
+	const [commentAdded, setCommentAdded] = useState(false);
 
 	useEffect(() => {
-		getArticleById(article_id).then((article) => {
+		getArticleById(articleId).then((article) => {
 			setSingleArticle(article);
 		});
-	}, [article_id]);
+	}, [articleId]);
 
 	function handleScrollToTop() {
 		window.scrollTo({ top: 0, behavior: "smooth" });
@@ -29,15 +31,19 @@ function SingleArticle() {
 				<h4>written by {singleArticle.author}</h4>
 				<p>{new Date(singleArticle.created_at).toLocaleDateString()}</p>
 				<p>{singleArticle.body}</p>
-				<VoteHandler article_id={article_id} singleArticle={singleArticle} />
+				<VoteHandler articleId={articleId} singleArticle={singleArticle} />
 			</section>
 			<p id="scroll-to-top" onClick={handleScrollToTop}>
 				scroll to top ↑{" "}
 			</p>
 			<section id="article-comments">
 				<h4>Comments</h4>
-				<CommentAdder article_id={article_id} />
-				<CommentExpandable article_id={singleArticle.article_id} />
+				<CommentAdder
+					setCommentAdded={setCommentAdded}
+					commentAdded={commentAdded}
+					articleId={articleId}
+				/>
+				<CommentExpandable articleId={articleId} commentAdded={commentAdded} />
 			</section>
 		</>
 	);

@@ -4,7 +4,7 @@ import { postCommentByUsername } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-function CommentAdder({ article_id }) {
+function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 	const { username } = useContext(UsernameContext);
 	const [commentInput, setCommentInput] = useState("");
 	const [isPosting, setIsPosting] = useState(false);
@@ -19,12 +19,13 @@ function CommentAdder({ article_id }) {
 	function handleClick(event) {
 		event.preventDefault();
 		setIsPosting(true);
-		postCommentByUsername(article_id, username, commentInput)
+		postCommentByUsername(articleId, username, commentInput)
 			.then((response) => {
 				setCommentInput("");
 				setPostSuccess(true);
-				setTimeout(() => setPostSuccess(false), 4000);
-				setTimeout(() => setIsPosting(false), 4000);
+				setTimeout(() => setPostSuccess(false), 1500);
+				setTimeout(() => setIsPosting(false), 1500);
+				setCommentAdded(!commentAdded);
 			})
 			.catch((err) => {
 				setIsPosting(false);
