@@ -4,20 +4,20 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
-const VoteHandler = ({ article_id, singleArticle }) => {
+const VoteHandler = ({ articleId, singleArticle }) => {
 	const [optimisticVotes, setOptimisticVotes] = useState(0);
 
 	function handleUpVote() {
 		setOptimisticVotes((currVotes) => {
 			return currVotes + 1;
 		});
-		articleVoteChange(article_id, 1);
+		articleVoteChange(articleId, 1);
 	}
 	function handleDownVote() {
 		setOptimisticVotes((currVotes) => {
 			return currVotes + -1;
 		});
-		articleVoteChange(article_id, -1);
+		articleVoteChange(articleId, -1);
 	}
 	return (
 		<div id="votes">
