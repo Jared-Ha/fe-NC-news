@@ -4,6 +4,7 @@ import { articleVoteChange, getArticleById } from "../api";
 import CommentExpandable from "./CommentExpandable";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import CommentAdder from "./CommentAdder";
 
 function SingleArticle() {
 	const [singleArticle, setSingleArticle] = useState({});
@@ -62,6 +63,7 @@ function SingleArticle() {
 			</p>
 			<section id="article-comments">
 				<h4>Comments</h4>
+				<CommentAdder article_id={article_id} />
 				<CommentExpandable article_id={singleArticle.article_id} />
 			</section>
 		</>

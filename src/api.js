@@ -31,3 +31,11 @@ export const articleVoteChange = (article_id, inc_votes) => {
 			return response.data;
 		});
 };
+
+export const postCommentByUsername = (article_id, username, body) => {
+	return newsApi
+		.post(`/articles/${article_id}/comments`, { username, body })
+		.then((response) => {
+			return response;
+		});
+};
