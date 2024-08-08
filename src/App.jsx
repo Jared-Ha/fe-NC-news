@@ -42,6 +42,22 @@ function App() {
 						></Route>
 					);
 				})}
+				<Route
+					path="*"
+					element={
+						<div>
+							<h3 className="page-error">404 - Page not found</h3>
+						</div>
+					}
+				></Route>
+				<Route
+					path="/topics/*"
+					element={
+						<div>
+							<h3 className="page-error">404 - Topic not found</h3>
+						</div>
+					}
+				></Route>
 			</Routes>
 		</>
 	);

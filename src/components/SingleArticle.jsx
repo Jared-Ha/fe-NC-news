@@ -12,13 +12,21 @@ function SingleArticle() {
 	const [articleId, setArticleId] = useState(article_id);
 	const [commentAdded, setCommentAdded] = useState(false);
 	const [isloading, setIsloading] = useState(false);
+	const [error, setError] = useState("");
 
 	useEffect(() => {
+		setError("");
 		setIsloading(true);
-		getArticleById(articleId).then((article) => {
-			setSingleArticle(article);
-			setIsloading(false);
-		});
+		getArticleById(articleId)
+			.then((article) => {
+				setSingleArticle(article);
+				setIsloading(false);
+			})
+			.catch((err) => {
+				setIsloading(false);
+				setError(err.response);
+				console.log(err.response);
+			});
 	}, [articleId]);
 
 	function handleScrollToTop() {
@@ -27,38 +35,57 @@ function SingleArticle() {
 
 	return (
 		<>
-			<section>
-				{isloading ? (
-					<div className="loading-box">
-						<LoadingCircleAnimation />
-					</div>
-				) : null}
-				<Link to="/">{"<- "}back</Link>
-				<h3>{singleArticle.title}</h3>
-
-				<h4>
-					<Link to={`/topics/${singleArticle.topic}`}>
-						#{singleArticle.topic}
-					</Link>
-				</h4>
-				<img id="img-sing-article" src={singleArticle.article_img_url}></img>
-				<h4>written by {singleArticle.author}</h4>
-				<p>{new Date(singleArticle.created_at).toLocaleDateString()}</p>
-				<p id="article-body">{singleArticle.body}</p>
-				<VoteHandler articleId={articleId} singleArticle={singleArticle} />
-			</section>
-			<p id="scroll-to-top" onClick={handleScrollToTop}>
-				scroll to top ↑{" "}
-			</p>
-			<section id="article-comments">
-				<h4>Comments</h4>
-				<CommentAdder
-					setCommentAdded={setCommentAdded}
-					commentAdded={commentAdded}
-					articleId={articleId}
-				/>
-				<CommentExpandable articleId={articleId} commentAdded={commentAdded} />
-			</section>
+			{error ? (
+				<h3 className="page-error">
+					{error.status}: {error.data.msg}
+				</h3>
+			) : (
+				<>
+					{isloading ? (
+						<div className="loading-box">
+							<LoadingCircleAnimation />
+						</div>
+					) : (
+						<>
+							<section>
+								<Link to="/">{"<- "}back</Link>
+								<h3>{singleArticle.title}</h3>
+								<h4>
+									<Link to={`/topics/${singleArticle.topic}`}>
+										#{singleArticle.topic}
+									</Link>
+								</h4>
+								<img
+									id="img-sing-article"
+									src={singleArticle.article_img_url}
+								></img>
+								<h4>written by {singleArticle.author}</h4>
+								<p>{new Date(singleArticle.created_at).toLocaleDateString()}</p>
+								<p id="article-body">{singleArticle.body}</p>
+								<VoteHandler
+									articleId={articleId}
+									singleArticle={singleArticle}
+								/>
+							</section>
+							<p id="scroll-to-top" onClick={handleScrollToTop}>
+								scroll to top ↑{" "}
+							</p>
+							<section id="article-comments">
+								<h4>Comments</h4>
+								<CommentAdder
+									setCommentAdded={setCommentAdded}
+									commentAdded={commentAdded}
+									articleId={articleId}
+								/>
+								<CommentExpandable
+									articleId={articleId}
+									commentAdded={commentAdded}
+								/>
+							</section>
+						</>
+					)}
+				</>
+			)}
 		</>
 	);
 }

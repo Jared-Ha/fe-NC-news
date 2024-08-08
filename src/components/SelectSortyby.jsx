@@ -13,7 +13,7 @@ function SelectSortBy({ setSortBy }) {
 
 	return (
 		<div>
-			<label htmlFor="select-sort-by"></label>
+			<label htmlFor="select-sort-by">Sort by: </label>
 			<select onChange={handleSortByChange} id="select-sort-by">
 				<option>Date</option>
 				<option>Comment count</option>

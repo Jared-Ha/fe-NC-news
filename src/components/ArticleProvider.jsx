@@ -8,9 +8,9 @@ function ArticleProvider({ searchTerm, topic }) {
 	const sortByQuery = searchParams.get("sort_by");
 	const orderQuery = searchParams.get("order");
 
-	function setSortBy(columName) {
+	function setSortBy(columnName) {
 		const newParams = new URLSearchParams(searchParams);
-		newParams.set("sort_by", columName);
+		newParams.set("sort_by", columnName);
 		setSearchParams(newParams);
 	}
 	function setOrderBy(direction) {

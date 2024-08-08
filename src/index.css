@@ -13,8 +13,13 @@ main {
 	padding: 20px;
 	border-radius: 10px;
 }
-h1 {
+#site-heading {
 	color: red;
+	text-decoration: none;
+	text-align: center;
+}
+#nc-logo {
+	transform: rotate(270deg);
 }
 h2 {
 	margin-bottom: 12px;
@@ -69,7 +74,7 @@ li {
 	text-align: right;
 }
 #select-sort-by {
-	width: 130px;
+	width: 140px;
 }
 /* #select-order-by {
 } */
@@ -107,11 +112,20 @@ option {
 	grid-area: title;
 	text-decoration: none;
 	color: black;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
 }
 #art-card-title {
 	padding-top: 5px;
 	padding-left: 10px;
+	width: 100%;
 	font-size: medium;
+	font-weight: bold;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid rgb(214, 214, 214);
 }
 #art-card-author {
 	font-size: small;
@@ -173,6 +187,11 @@ option {
 	padding-bottom: 10px;
 	border-bottom: 2px solid rgb(136, 136, 136);
 }
+#comment-adder-username {
+	margin: 0px;
+	margin-left: 7px;
+	margin-bottom: 5px;
+}
 #comment-form {
 	margin-left: 5px;
 }
@@ -182,6 +201,13 @@ option {
 	font-size: small;
 	font-family: Arial, Helvetica, sans-serif;
 	padding: 5px;
+}
+#characters-remaining {
+	font-size: small;
+	color: grey;
+	margin: 0px;
+	margin-right: 15px;
+	text-align: right;
 }
 #publish-comment-button {
 	color: white;
@@ -258,4 +284,8 @@ option {
 .topic-image {
 	width: auto;
 	height: 100%;
+}
+
+.page-error {
+	color: rgb(141, 0, 0);
 }
