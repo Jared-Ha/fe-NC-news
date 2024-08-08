@@ -4,16 +4,20 @@ import { getArticleById } from "../api";
 import CommentExpandable from "./CommentExpandable";
 import CommentAdder from "./CommentAdder";
 import VoteHandler from "./VoteHandler";
+import LoadingCircleAnimation from "../animations/Loading-Circle.jsx";
 
 function SingleArticle() {
 	const [singleArticle, setSingleArticle] = useState({});
 	const { article_id } = useParams();
 	const [articleId, setArticleId] = useState(article_id);
 	const [commentAdded, setCommentAdded] = useState(false);
+	const [isloading, setIsloading] = useState(false);
 
 	useEffect(() => {
+		setIsloading(true);
 		getArticleById(articleId).then((article) => {
 			setSingleArticle(article);
+			setIsloading(false);
 		});
 	}, [articleId]);
 
@@ -24,6 +28,11 @@ function SingleArticle() {
 	return (
 		<>
 			<section>
+				{isloading ? (
+					<div className="loading-box">
+						<LoadingCircleAnimation />
+					</div>
+				) : null}
 				<Link to="/">{"<- "}back</Link>
 				<h3>{singleArticle.title}</h3>
 
