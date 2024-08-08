@@ -190,7 +190,7 @@ li {
 #comment-date {
 	font-size: small;
 }
-#comment-deleted {
+#comment-delete-message {
 	color: rgb(99, 0, 0);
 	font-size: small;
 }

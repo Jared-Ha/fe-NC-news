@@ -5,20 +5,26 @@ import { deleteUsersComment } from "../api";
 function CommentCard({ comment }) {
 	const { username } = useContext(UsernameContext);
 	const [optimisticDeleted, setOptimisticDeleted] = useState(false);
+	const [isDeleted, setIsDeleted] = useState(false);
 	const comment_id = comment.comment_id;
 
 	function handleDeleteClick() {
 		setOptimisticDeleted(true);
 		deleteUsersComment(comment_id)
-			.then(() => {})
+			.then(() => {
+				setIsDeleted(true);
+				setOptimisticDeleted(false);
+			})
 			.catch(() => {
-				setIsDeleted(false);
+				setOptimisticDeleted(false);
 			});
 	}
 	return (
 		<li id="comments-list-item">
-			{optimisticDeleted ? (
-				<p id="comment-deleted">* comment deleted</p>
+			{isDeleted ? (
+				<p id="comment-delete-message">Comment deleted</p>
+			) : optimisticDeleted ? (
+				<p id="comment-delete-message">*deleting your comment...</p>
 			) : (
 				<>
 					<h5>{comment.author}</h5>
