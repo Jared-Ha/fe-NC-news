@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Search from "./components/Search";
-import ArticleList from "./components/ArticleList";
+import ArticleProvider from "./components/ArticleProvider";
 import TopicList from "./components/TopicList";
 import UserList from "./components/UserList";
 import { useEffect } from "react";
@@ -26,7 +26,7 @@ function App() {
 			<Routes>
 				<Route
 					path="/"
-					element={<ArticleList searchTerm={searchTerm} />}
+					element={<ArticleProvider searchTerm={searchTerm} />}
 				></Route>{" "}
 				<Route path="/topics" element={<TopicList topics={topics} />}></Route>{" "}
 				<Route path="/users" element={<UserList />}></Route>
@@ -37,7 +37,7 @@ function App() {
 							key={topic.slug}
 							path={`/topics/${topic.slug}`}
 							element={
-								<ArticleList searchTerm={searchTerm} topic={topic.slug} />
+								<ArticleProvider searchTerm={searchTerm} topic={topic.slug} />
 							}
 						></Route>
 					);
