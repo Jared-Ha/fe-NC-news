@@ -26,7 +26,12 @@ function SingleArticle() {
 			<section>
 				<Link to="/">{"<- "}back</Link>
 				<h3>{singleArticle.title}</h3>
-				<h4>#{singleArticle.topic}</h4>
+
+				<h4>
+					<Link to={`/topics/${singleArticle.topic}`}>
+						#{singleArticle.topic}
+					</Link>
+				</h4>
 				<img id="img-sing-article" src={singleArticle.article_img_url}></img>
 				<h4>written by {singleArticle.author}</h4>
 				<p>{new Date(singleArticle.created_at).toLocaleDateString()}</p>

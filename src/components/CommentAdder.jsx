@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UsernameContext } from "../contexts/Username";
 import { postCommentByUsername } from "../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 	const { username } = useContext(UsernameContext);
@@ -57,7 +57,13 @@ function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 					disabled={isPosting ? true : false}
 					id="publish-comment-button"
 				>
-					{isPosting ? "loading..." : "Publish"}
+					{isPosting ? (
+						"loading..."
+					) : (
+						<>
+							Add comment <FontAwesomeIcon icon={faPaperPlane} />
+						</>
+					)}
 				</button>
 				{error ? <p id="error-comment">{error}</p> : null}
 			</form>
