@@ -1,12 +1,11 @@
 /* * {
 	outline: 1px solid red;
 } */
-
 body {
 	background-color: #e6e9f7;
-	margin-top: 20px;
-	margin-left: 5%;
-	margin-right: 5%;
+	margin-top: 5px;
+	margin-left: 2%;
+	margin-right: 2%;
 	font-family: Arial, Helvetica, sans-serif;
 }
 main {
@@ -14,7 +13,6 @@ main {
 	padding: 20px;
 	border-radius: 10px;
 }
-
 h1 {
 	color: red;
 }
@@ -34,6 +32,11 @@ ul {
 	flex-wrap: wrap;
 	justify-content: center;
 	padding-left: 0px;
+	margin: 0px;
+}
+#art-list {
+	margin: 0px;
+	padding: 0px;
 }
 li {
 	list-style: none;
@@ -43,12 +46,15 @@ li {
 	margin-top: 10px;
 	margin-bottom: 15px;
 }
-
 #search-input {
 	width: 60%;
 	max-width: 350px;
 }
-
+.loading-box {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .article-card {
 	display: grid;
 	grid-template-columns: 34% 22% 22% 22%;
@@ -57,16 +63,21 @@ li {
 		"image title title title"
 		"image author author author"
 		"image topic date votes";
-	border: solid grey 2px;
-	padding: 10px;
+	border: solid grey 1px;
 	margin: 10px;
-	width: 460px;
+	margin-left: 2px;
+	margin-right: 2px;
+	width: 100%;
+	max-width: 550px;
 }
 #image-link {
 	grid-area: image;
+	display: flex;
+	align-items: center;
 }
 .article-card-img {
-	max-width: 120px;
+	max-width: 100%;
+	padding: 0px;
 }
 #title-link {
 	grid-area: title;
@@ -74,14 +85,18 @@ li {
 	color: black;
 }
 #art-card-title {
+	padding-top: 5px;
+	padding-left: 10px;
 	font-size: medium;
 }
 #art-card-author {
 	font-size: small;
 	color: blue;
+	padding-left: 10px;
 	grid-area: author;
 }
 #art-card-topic {
+	padding-left: 10px;
 	grid-area: topic;
 }
 #art-card-date {
@@ -97,7 +112,7 @@ li {
 	width: 100%;
 	max-width: 55vw;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
 	#img-sing-article {
 		max-width: 100%;
 	}
@@ -144,22 +159,15 @@ li {
 	align-items: center;
 	justify-content: center;
 }
-
 #error-comment {
 	color: red;
 	font-size: small;
 }
-
-#loading-circle {
-	width: 20%;
-}
-
 #comments-list {
 	background-color: rgb(250, 250, 250);
 	display: block;
 	text-align: left;
 }
-
 #comments-list-item {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -173,8 +181,34 @@ li {
 	color: rgb(99, 0, 0);
 	font-size: small;
 }
-
 #toggle-comments {
 	cursor: pointer;
 	color: blue;
+}
+#topic-ul {
+	display: block;
+	text-align: left;
+}
+.topic-text {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 100%;
+}
+#topic-link-box {
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	color: black;
+	text-decoration: none;
+	margin-bottom: 10px;
+	outline: 1px solid rgb(158, 158, 158);
+	height: 100px;
+}
+#topic-link-box :hover {
+	color: blue;
+}
+.topic-image {
+	width: auto;
+	height: 100%;
 }

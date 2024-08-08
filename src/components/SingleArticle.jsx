@@ -30,7 +30,7 @@ function SingleArticle() {
 				<img id="img-sing-article" src={singleArticle.article_img_url}></img>
 				<h4>written by {singleArticle.author}</h4>
 				<p>{new Date(singleArticle.created_at).toLocaleDateString()}</p>
-				<p>{singleArticle.body}</p>
+				<p id="article-body">{singleArticle.body}</p>
 				<VoteHandler articleId={articleId} singleArticle={singleArticle} />
 			</section>
 			<p id="scroll-to-top" onClick={handleScrollToTop}>
