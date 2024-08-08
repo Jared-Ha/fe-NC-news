@@ -10,31 +10,42 @@ function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 	const [isPosting, setIsPosting] = useState(false);
 	const [error, setError] = useState("");
 	const [postSuccess, setPostSuccess] = useState(false);
+	const [commentCharsCount, setCommentCharsCount] = useState(0);
 
+	const maxCharError = "Comment exceeds the maximum 500 characters allowed";
 	function handleChange(event) {
-		setError("");
+		commentInput.length < 500 ? setError("") : setError(maxCharError);
+
 		setCommentInput(event.target.value);
+		setCommentCharsCount(commentInput.length);
 	}
 
 	function handleClick(event) {
 		event.preventDefault();
 		setIsPosting(true);
-		postCommentByUsername(articleId, username, commentInput)
-			.then((response) => {
-				setCommentInput("");
-				setPostSuccess(true);
-				setTimeout(() => setPostSuccess(false), 1500);
-				setTimeout(() => setIsPosting(false), 1500);
-				setCommentAdded(!commentAdded);
-			})
-			.catch((err) => {
-				setIsPosting(false);
-				setError(err.response.data.msg);
-			});
+		if (commentInput.length > 500) {
+			setError(maxCharError);
+			setIsPosting(false);
+		} else {
+			postCommentByUsername(articleId, username, commentInput)
+				.then((response) => {
+					setCommentInput("");
+					setPostSuccess(true);
+					setTimeout(() => setPostSuccess(false), 1500);
+					setTimeout(() => setIsPosting(false), 1500);
+					setCommentAdded(!commentAdded);
+				})
+				.catch((err) => {
+					console.log(err);
+					setIsPosting(false);
+					setError(err.response.data.msg);
+				});
+		}
 	}
 
 	return (
 		<>
+			<h5 id="comment-adder-username">{username}</h5>
 			<form id="comment-form">
 				<label id="comment-label" htmlFor="comment-input">
 					{postSuccess ? (
@@ -51,6 +62,7 @@ function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 						></textarea>
 					)}
 				</label>
+				<p id="characters-remaining">{commentCharsCount}/500</p>
 
 				<button
 					onClick={handleClick}
