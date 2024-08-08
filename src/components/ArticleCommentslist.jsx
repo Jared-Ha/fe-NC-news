@@ -16,7 +16,11 @@ function ArticleCommentsList({ articleId, commentAdded }) {
 	}, [articleId, commentAdded]);
 
 	if (isLoading) {
-		return <LoadingCircleAnimation />;
+		return (
+			<div className="loading-box">
+				<LoadingCircleAnimation />
+			</div>
+		);
 	}
 
 	return (

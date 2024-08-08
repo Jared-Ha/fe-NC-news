@@ -4,12 +4,10 @@ const newsApi = axios.create({
 	baseURL: "https://be-nc-news-ywak.onrender.com/api/",
 });
 
-export const getArticles = (searchTerm) => {
-	return newsApi
-		.get("/articles", { params: { searchTerm } })
-		.then((response) => {
-			return response.data.articles;
-		});
+export const getArticles = (topic) => {
+	return newsApi.get("/articles", { params: { topic } }).then((response) => {
+		return response.data.articles;
+	});
 };
 
 export const getArticleById = (article_id) => {
@@ -42,4 +40,10 @@ export const postCommentByUsername = (article_id, username, body) => {
 
 export const deleteUsersComment = (commentId) => {
 	return newsApi.delete(`/comments/${commentId}`);
+};
+
+export const getTopics = () => {
+	return newsApi.get("/topics").then(({ data: { topics } }) => {
+		return topics;
+	});
 };
