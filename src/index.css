@@ -13,11 +13,32 @@ main {
 	padding: 20px;
 	border-radius: 10px;
 }
-#site-heading {
+
+#site-name-and-user {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+#site-title {
+	font-size: xx-large;
 	color: red;
 	text-decoration: none;
 	text-align: center;
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
+
+#username-in-header {
+	color: red;
+	margin: 0px;
+	text-decoration: none;
+	font-size: 14px;
+}
+#header-current-user {
+	text-decoration: none;
+	font-weight: bold;
+}
+
 #nc-logo {
 	transform: rotate(270deg);
 }
@@ -93,7 +114,7 @@ option {
 		"image author author author author"
 		"image topic date votes commentCount";
 	border: solid grey 1px;
-	margin: 10px;
+	margin: 5px;
 	margin-left: 2px;
 	margin-right: 2px;
 	width: 100%;
@@ -149,12 +170,17 @@ option {
 	grid-area: votes;
 	display: flex;
 	align-items: center;
+	color: rgb(85, 85, 85);
+	font-size: 95%;
 }
 
 #art-card-comment-count {
 	grid-area: commentCount;
 	display: flex;
 	align-items: center;
+	color: rgb(85, 85, 85);
+
+	font-size: 95%;
 }
 #img-sing-article {
 	display: block;
@@ -217,6 +243,11 @@ option {
 }
 #publish-comment-button:hover {
 	background-color: rgb(255, 85, 85);
+	outline: 1px solid rgb(117, 0, 0);
+}
+
+#publish-comment-button:active {
+	background-color: rgb(255, 178, 178);
 	outline: 1px solid rgb(117, 0, 0);
 }
 #post-success-box {
@@ -288,4 +319,60 @@ option {
 
 .page-error {
 	color: rgb(141, 0, 0);
+}
+
+#user-card {
+	display: grid;
+	grid-template-columns: 35% auto 20%;
+	grid-template-rows: auto auto;
+	grid-template-areas:
+		"image username login"
+		"image name login";
+	outline: 1px solid rgb(195, 195, 255);
+	margin-top: 10px;
+	margin-right: 20px;
+	margin-left: 20px;
+	width: 350px;
+	height: 70px;
+}
+
+#user-avatar {
+	grid-area: image;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 70px;
+}
+
+#user-avatar img {
+	height: 70px;
+}
+#username-in-user-card {
+	margin-top: 10px;
+	grid-area: username;
+	text-decoration: none;
+	color: black;
+}
+#name-in-user-card {
+	font-size: small;
+	grid-area: name;
+}
+#login-in-user-card {
+	grid-area: login;
+	align-self: center;
+}
+
+#button-user-login {
+	color: white;
+	background-color: red;
+	padding: 5px;
+	border: 1px solid red;
+}
+#button-user-login:hover {
+	background-color: rgb(255, 85, 85);
+	outline: 1px solid rgb(117, 0, 0);
+}
+#button-user-login:active {
+	background-color: rgb(255, 178, 178);
+	outline: 1px solid rgb(117, 0, 0);
 }

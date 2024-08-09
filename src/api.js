@@ -49,3 +49,15 @@ export const getTopics = () => {
 		return topics;
 	});
 };
+
+export const getUsers = () => {
+	return newsApi.get("/users").then(({ data: { users } }) => {
+		return users;
+	});
+};
+
+export const getUserByUsername = (username) => {
+	return newsApi.get(`/users/${username}`).then((response) => {
+		return response.data.user;
+	});
+};
