@@ -34,6 +34,7 @@ function ArticleProvider({ searchTerm, topic }) {
 				topic={topic}
 				sortByQuery={sortByQuery}
 				orderQuery={orderQuery}
+				searchTerm={searchTerm}
 			/>
 		</>
 	);
