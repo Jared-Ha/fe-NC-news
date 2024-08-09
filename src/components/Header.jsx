@@ -5,7 +5,7 @@ import { faGreaterThan } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { UsernameContext } from "../contexts/Username";
 
-function Header() {
+function Header({ setSearchTerm }) {
 	const { currentUsername } = useContext(UsernameContext);
 
 	return (
@@ -37,7 +37,7 @@ function Header() {
 					</>
 				)}
 			</section>
-			<Nav />
+			<Nav setSearchTerm={setSearchTerm} />
 		</>
 	);
 }

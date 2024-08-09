@@ -3,7 +3,7 @@ import { UsernameContext } from "../contexts/Username";
 import { deleteUsersComment } from "../api";
 
 function CommentCard({ comment }) {
-	const { username } = useContext(UsernameContext);
+	const { currentUsername } = useContext(UsernameContext);
 	const [optimisticDeleted, setOptimisticDeleted] = useState(false);
 	const [isDeleted, setIsDeleted] = useState(false);
 	const comment_id = comment.comment_id;
@@ -32,7 +32,7 @@ function CommentCard({ comment }) {
 					<p id="comment-date">
 						{new Date(comment.created_at).toLocaleDateString()}
 					</p>
-					{username === comment.author ? (
+					{currentUsername === comment.author ? (
 						<button onClick={handleDeleteClick}>Delete comment</button>
 					) : null}
 				</>

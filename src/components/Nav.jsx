@@ -2,16 +2,19 @@ import ArticleList from "./ArticleList";
 import { Link } from "react-router-dom";
 import TopicList from "./TopicList";
 
-function Nav() {
+function Nav({ setSearchTerm }) {
+	function handleNavigateFromList() {
+		setSearchTerm("");
+	}
 	return (
 		<nav>
-			<Link to="/" element={<ArticleList />}>
+			<Link onClick={handleNavigateFromList} to="/" element={<ArticleList />}>
 				Latest news
-			</Link>{" "}
-			<Link to="/topics" element={<TopicList />}>
+			</Link>
+			<Link onClick={handleNavigateFromList} to="/topics">
 				Topics
 			</Link>{" "}
-			<Link to="/users" element={<TopicList />}>
+			<Link onClick={handleNavigateFromList} to="/users">
 				Users
 			</Link>
 		</nav>

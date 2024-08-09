@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 
 function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
-	const { username } = useContext(UsernameContext);
+	const { currentUsername } = useContext(UsernameContext);
 	const [commentInput, setCommentInput] = useState("");
 	const [isPosting, setIsPosting] = useState(false);
 	const [error, setError] = useState("");
@@ -27,7 +27,7 @@ function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 			setError(maxCharError);
 			setIsPosting(false);
 		} else {
-			postCommentByUsername(articleId, username, commentInput)
+			postCommentByUsername(articleId, currentUsername, commentInput)
 				.then((response) => {
 					setCommentInput("");
 					setPostSuccess(true);
@@ -45,7 +45,7 @@ function CommentAdder({ articleId, setCommentAdded, commentAdded }) {
 
 	return (
 		<>
-			<h5 id="comment-adder-username">{username}</h5>
+			<h5 id="comment-adder-username">{currentUsername}</h5>
 			<form id="comment-form">
 				<label id="comment-label" htmlFor="comment-input">
 					{postSuccess ? (
