@@ -8,6 +8,7 @@ import UserList from "./components/UserList";
 import { useEffect } from "react";
 import SingleArticle from "./components/SingleArticle";
 import { getTopics } from "./api";
+import SingleUser from "./components/SingleUser";
 
 function App() {
 	const [searchTerm, setSearchTerm] = useState("");
@@ -30,6 +31,7 @@ function App() {
 				></Route>{" "}
 				<Route path="/topics" element={<TopicList topics={topics} />}></Route>{" "}
 				<Route path="/users" element={<UserList />}></Route>
+				<Route path="/users/:username" element={<SingleUser />}></Route>
 				<Route path="/articles/:article_id" element={<SingleArticle />}></Route>
 				{topics.map((topic) => {
 					return (
