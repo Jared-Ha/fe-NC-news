@@ -8,10 +8,10 @@ Welcome to my NC News application. This is the frontend project I built during m
 
 ## How to Install and run the Repo Locally on Your PC
 
-- Clone the repo using `git clone https://github.com/Jared-Ha/fe-NC-news`
-- `cd` into your new local repo directory
-- Install dependencies by running the terminal command `npm install`
-- Start the server: `npm run dev`
+- Clone the repo using `git clone https://github.com/Jared-Ha/fe-NC-news`.
+- `cd` into your new local repo directory.
+- Install dependencies by running the terminal command `npm install`.
+- Start the server: `npm run dev`.
 
 ## Minimum Required Versions of Node.js
 

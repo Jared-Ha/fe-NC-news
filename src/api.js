@@ -4,9 +4,9 @@ const newsApi = axios.create({
 	baseURL: "https://be-nc-news-ywak.onrender.com/api/",
 });
 
-export const getArticles = (topic, sort_by, order) => {
+export const getArticles = (topic, sort_by, order, searchTerm) => {
 	return newsApi
-		.get("/articles", { params: { topic, sort_by, order } })
+		.get("/articles", { params: { topic, sort_by, order, searchTerm } })
 		.then((response) => {
 			return response.data.articles;
 		});

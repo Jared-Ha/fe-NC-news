@@ -22,14 +22,22 @@ function App() {
 
 	return (
 		<>
-			<Header />
+			<Header setSearchTerm={setSearchTerm} />
 			<Search setSearchTerm={setSearchTerm} />
 			<Routes>
 				<Route
 					path="/"
 					element={<ArticleProvider searchTerm={searchTerm} />}
-				></Route>{" "}
-				<Route path="/topics" element={<TopicList topics={topics} />}></Route>{" "}
+				></Route>
+				<Route path="/topics" element={<TopicList topics={topics} />}></Route>
+				<Route
+					path="/topics/*"
+					element={
+						<div>
+							<h3 className="page-error">404 - Topic not found</h3>
+						</div>
+					}
+				></Route>
 				<Route path="/users" element={<UserList />}></Route>
 				<Route path="/users/:username" element={<SingleUser />}></Route>
 				<Route path="/articles/:article_id" element={<SingleArticle />}></Route>
@@ -49,14 +57,6 @@ function App() {
 					element={
 						<div>
 							<h3 className="page-error">404 - Page not found</h3>
-						</div>
-					}
-				></Route>
-				<Route
-					path="/topics/*"
-					element={
-						<div>
-							<h3 className="page-error">404 - Topic not found</h3>
 						</div>
 					}
 				></Route>
